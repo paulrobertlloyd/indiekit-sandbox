@@ -1,0 +1,33 @@
+---
+layout: null
+---
+{
+  "type": "feed",
+  "title": "{{ site.title | xml_escape }}",
+  "url": "{{ "/" | absolute_url }}",
+  "children": [{% for post in site.documents reversed limit:20 %}{
+    "type": "entry",
+    "post-type": "{{ post['post-type'] }}",
+    "url": "{{ post.url | absolute_url }}",
+    {%- if post.title != "" %}"name": {{ post.title | jsonify }},{% endif %}
+    {%- if post.summary %}"summary": {{ post.summary | jsonify }},{% endif %}
+    "content": {
+      "text": {{ post.content | strip_html | strip_newlines | jsonify }},
+      "html": {{ post.content | strip_newlines | jsonify }}
+    },
+    {%- if post.tags.size > 0 %}"category": {{ post.tags | jsonify }},{% endif %}
+    {%- if post['bookmark-of'] %}"bookmark-of": {{ post['bookmark-of'] | jsonify }},{% endif %}
+    {%- if post['in-reply-to'] %}"in-reply-to": {{ post['in-reply-to'] | jsonify }},{% endif %}
+    {%- if post.photo.size > 0 %}"photo": [{% for photo in post.photo %}
+      {
+        "url": "{{ photo.url }}",
+        "alt": "{{ photo.alt }}",
+        "content-type": "image/jpg"
+      }{% if forloop.last == false %},{% endif %}
+    {% endfor %}],{% endif %}
+    {% if post.syndication %}"syndication": {{ post.syndication | jsonify }},{% endif %}
+    {%- if post['mp-syndicate-to'] %}"mp-syndicate-to": {{ post['mp-syndicate-to'] | jsonify }},{% endif %}
+    "published": "{{ post.date | date_to_xmlschema }}"
+  }{% if forloop.last == false %},{% endif %}
+  {%- endfor %}]
+}

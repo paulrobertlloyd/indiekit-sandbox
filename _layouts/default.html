@@ -1,0 +1,16 @@
+<html lang="en-gb">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="alternate" href="/feed.json" type="application/feed+json" title="JSON Feed">
+    <link rel="alternate" href="/feed.jf2.json" type="application/jf2feed+json" title="JF2 Feed">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="pgpkey authn" href="key.txt">
+    <link rel="micropub" href="https://indiekit.herokuapp.com/micropub">
+    <title>{% if page.title != '' %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  </head>
+  <body>
+{{ content }}
+  </body>
+</html>

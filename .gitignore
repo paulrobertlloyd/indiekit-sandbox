@@ -1,0 +1,4 @@
+# Local development only
+Gemfile
+Gemfile.lock
+_site

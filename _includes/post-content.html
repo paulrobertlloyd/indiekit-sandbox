@@ -1,0 +1,60 @@
+{% assign post = include.post %}
+
+{% if post.video != null %}
+  {% for video in post.video %}
+  <video class="u-video" src="{{ video }}" controls loop>
+    <div lang="en">Looks like you can't see this video. <a href="{{ video }}" download>Download it</a> instead.</div>
+  </video>
+  {% endfor %}
+{% endif %}
+
+{% if post.photo != null %}
+  {% for photo in post.photo %}
+  <img class="u-photo" src="{{ photo.url | prepend: '/' | prepend: site.github.url }}" alt="{{ photo.alt }}" />
+  {% endfor %}
+{% endif %}
+
+{% if post.like-of != null %}
+  <h3>Like of:</h3>
+  <ul>
+  {% for like in post.like-of %}
+    <li><a class="u-like-of" href="{{ like }}">{{ like }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% if post.repost-of != null %}
+  <h3>Repost of:</h3>
+  <ul>
+  {% for repost in post.repost-of %}
+    <li><a class="u-repost-of" href="{{ repost }}">{{ repost }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% if post.in-reply-to != null %}
+  <h3>In reply to:</h3>
+  <ul>
+  {% for reply in post.in-reply-to %}
+    <li><a class="u-in-reply-to" href="{{ reply }}">{{ reply }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{{ post.title }}
+<div class="e-content{% if post.title == '' %} p-name{% endif %}">
+{% if post.content %}
+  {{ post.content }}
+{% else %}
+  {{ content }}
+{% endif %}
+</div>
+
+{% if post.syndication != null %}
+  <h3>Also posted on:</h3>
+  <ul>
+  {% for syndication in post.syndication %}
+    <li><a href="{{ syndication }}" class="u-syndication" {% if standalone == true %}rel="syndication"{% endif %}>{{ syndication | remove_first:'http://' | remove_first:'https://' | remove_first:'www.' }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}

@@ -1,0 +1,123 @@
+title: IndieKit Sandbox
+
+collections:
+  articles:
+    output: true
+  notes:
+    output: true
+  photos:
+    output: true
+  videos:
+    output: true
+  audio:
+    output: true
+  replies:
+    output: true
+  likes:
+    output: true
+  bookmarks:
+    output: true
+  checkins:
+    output: true
+  events:
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: articles
+    values:
+      layout: entry
+      post-type: article
+      permalink: /:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: notes
+    values:
+      layout: entry
+      title: ""
+      post-type: note
+      permalink: notes/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: photos
+    values:
+      layout: entry
+      title: ""
+      post-type: photo
+      permalink: photos/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: videos
+    values:
+      layout: entry
+      title: ""
+      post-type: video
+      permalink: videos/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: audio
+    values:
+      layout: entry
+      title: ""
+      post-type: audio
+      permalink: audio/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: replies
+    values:
+      layout: entry
+      title: ""
+      post-type: reply
+      permalink: replies/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: likes
+    values:
+      layout: entry
+      title: ""
+      post-type: like
+      permalink: likes/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: reposts
+    values:
+      layout: entry
+      title: ""
+      post-type: repost
+      permalink: reposts/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: bookmarks
+    values:
+      layout: entry
+      post-type: bookmark
+      permalink: bookmarks/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: checkins
+    values:
+      layout: entry
+      title: ""
+      post-type: checkin
+      permalink: checkins/:year/:month/:day/:slug
+  -
+    scope:
+      path: ""
+      type: events
+    values:
+      layout: entry
+      post-type: event
+      permalink: events/:year/:month/:day/:slug
+
+exclude: [etc]
